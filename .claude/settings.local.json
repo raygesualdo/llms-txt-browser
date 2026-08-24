@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(asdf install *)",
+      "Bash(pnpm create *)",
+      "Bash(pnpm install *)",
+      "Bash(asdf reshim *)",
+      "Bash(pnpm --version)",
+      "Bash(asdf list *)",
+      "Bash(asdf current *)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm remove *)",
+      "Bash(npx tsc *)",
+      "Bash(pnpm dev *)",
+      "Bash(curl -s http://localhost:5176/)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "aperture",
+    "onshape"
+  ]
+}
