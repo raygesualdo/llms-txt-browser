@@ -14,7 +14,7 @@ export function Footer({ className = '' }: { className?: string }) {
       </a>{' '}
       &middot;{' '}
       <a
-        href="#"
+        href="https://github.com/raygesualdo/llms-txt-browser"
         className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400"
         target="_blank"
         rel="noopener noreferrer"
