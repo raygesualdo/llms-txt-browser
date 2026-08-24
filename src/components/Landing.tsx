@@ -39,7 +39,7 @@ export function Landing({
   }
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col bg-white dark:bg-gray-900">
       <div className="flex justify-end p-4">
         <ThemeToggle theme={theme} setTheme={setTheme} />
       </div>
