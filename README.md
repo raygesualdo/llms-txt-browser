@@ -2,6 +2,8 @@
 
 A single-page app for previewing [llms.txt](https://llmstxt.org/) files. Paste a URL, and the app fetches the file and displays it in a split view: raw source on the left, rendered Markdown on the right.
 
+![Screenshot](./public/og-image.png)
+
 ## AI Disclosure
 
 This project was planned by a human with Claude's help, written mostly by Claude, and edited and reviewed by a human.
