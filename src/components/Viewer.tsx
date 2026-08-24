@@ -1,4 +1,5 @@
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 import { ErrorDisplay } from "./ErrorDisplay";
 import { RawPane } from "./RawPane";
 import { RenderedPane } from "./RenderedPane";
@@ -78,17 +79,7 @@ export function Viewer({
           </>
         )}
       </div>
-      <footer className="shrink-0 border-t border-gray-200 bg-white px-4 py-2 text-center text-xs text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
-        Built with Claude &middot;{" "}
-        <a
-          href="#"
-          className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Source Code
-        </a>
-      </footer>
+      <Footer className="bg-white dark:bg-gray-900" />
     </div>
   );
 }
