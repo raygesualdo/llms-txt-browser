@@ -33,7 +33,7 @@ export function Landing({
           backgroundSize: '24px 24px',
         }}
       />
-      <div className="relative flex justify-end p-4">
+      <div className="relative flex justify-end px-4 h-14 shrink-0 items-center">
         <ThemeToggle theme={theme} setTheme={setTheme} />
       </div>
       <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center px-4">
