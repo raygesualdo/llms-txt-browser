@@ -42,9 +42,13 @@ export function Viewer({
               {content ? (
                 <RawPane content={content} />
               ) : (
-                <div className="flex h-full items-center justify-center p-4">
-                  <p className="text-sm text-gray-400 dark:text-gray-500">
-                    Fetching document...
+                <div className="flex h-full flex-col items-center justify-center gap-3 p-8">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-indigo-500 dark:border-gray-600 dark:border-t-indigo-400" />
+                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    Fetching source
+                  </p>
+                  <p className="max-w-xs break-all text-center font-mono text-xs text-gray-400 dark:text-gray-500">
+                    {docUrl}
                   </p>
                 </div>
               )}
@@ -60,9 +64,13 @@ export function Viewer({
                   onNavigate={onNavigate}
                 />
               ) : (
-                <div className="flex h-full items-center justify-center p-4">
-                  <p className="text-sm text-gray-400 dark:text-gray-500">
-                    Rendered preview will appear here
+                <div className="flex h-full flex-col items-center justify-center gap-3 p-8">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-indigo-500 dark:border-gray-600 dark:border-t-indigo-400" />
+                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    Preparing preview
+                  </p>
+                  <p className="text-xs text-gray-400 dark:text-gray-500">
+                    Markdown will be rendered here once loaded
                   </p>
                 </div>
               )}
