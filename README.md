@@ -1,32 +1,47 @@
-# React + TypeScript + Vite
+# llms.txt Browser
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A single-page app for previewing [llms.txt](https://llmstxt.org/) files. Paste a URL, and the app fetches the file and displays it in a split view: raw source on the left, rendered Markdown on the right.
 
-Currently, two official plugins are available:
+## AI Disclosure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project was planned by a human with Claude's help, written mostly by Claude, and edited and reviewed by a human.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Side-by-side raw + rendered Markdown view
+- Relative `.md` / `.txt` links navigate within the app
+- External links open in a new tab
+- Deep linking via `?url=` query parameter
+- Dark mode (light / dark / system toggle)
+- Frontmatter parsed and displayed as a key-value table
+- Cross-origin fetching via [corsproxy.io](https://corsproxy.io)
 
-## Expanding the Oxlint configuration
+## Development
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Prerequisites
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+- [asdf](https://asdf-vm.com/) for managing tool versions
+
+### Setup
+
+```sh
+asdf install        # installs Node.js and pnpm from .tool-versions
+pnpm install        # install dependencies
+pnpm dev            # start dev server
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Tech Stack
+
+- **React** + **TypeScript** (Vite)
+- **Tailwind CSS v4** with `@tailwindcss/typography`
+- **marked** for Markdown parsing
+- **DOMPurify** for HTML sanitization
+- Native **Navigation API** for client-side routing
+
+### Scripts
+
+| Command        | Description                      |
+| -------------- | -------------------------------- |
+| `pnpm dev`     | Start development server         |
+| `pnpm build`   | Production build                 |
+| `pnpm preview` | Preview production build locally |
