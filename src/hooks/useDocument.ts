@@ -49,9 +49,3 @@ export function useDocument(docUrl: string | null) {
   return state
 }
 
-export function fetchDocument(docUrl: string): Promise<string> {
-  return fetch(proxyUrl(docUrl)).then((res) => {
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    return res.text()
-  })
-}

@@ -6,12 +6,10 @@ export function RenderedPane({
   content,
   baseUrl,
   onNavigate,
-  inert,
 }: {
   content: string;
   baseUrl: string;
   onNavigate: (url: string) => void;
-  inert: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { frontmatter, html } = parseDocument(content);
@@ -42,11 +40,7 @@ export function RenderedPane({
   }, [html, baseUrl, onNavigate]);
 
   return (
-    <div
-      ref={ref}
-      inert={inert ? true : undefined}
-      className={`overflow-auto overscroll-none bg-white p-6 dark:bg-gray-800 transition-opacity ${inert ? "opacity-50" : ""}`}
-    >
+    <div ref={ref} className="p-6">
       {frontmatter && (
         <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900">
           <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">

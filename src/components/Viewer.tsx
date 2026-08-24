@@ -36,23 +36,39 @@ export function Viewer({
           <div className="col-span-full flex items-center justify-center">
             <ErrorDisplay error={error} url={docUrl} />
           </div>
-        ) : content ? (
+        ) : (
           <>
-            <RawPane content={content} />
-            <RenderedPane
-              content={content}
-              baseUrl={docUrl}
-              onNavigate={onNavigate}
-              inert={loading}
-            />
-          </>
-        ) : loading ? (
-          <div className="col-span-full flex items-center justify-center">
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              Loading...
+            <div className="overflow-auto overscroll-none bg-gray-50 shadow-[inset_-8px_0_12px_-8px_rgba(0,0,0,0.08)] dark:bg-gray-900 dark:shadow-[inset_-8px_0_12px_-8px_rgba(0,0,0,0.3)]">
+              {content ? (
+                <RawPane content={content} />
+              ) : (
+                <div className="flex h-full items-center justify-center p-4">
+                  <p className="text-sm text-gray-400 dark:text-gray-500">
+                    Fetching document...
+                  </p>
+                </div>
+              )}
             </div>
-          </div>
-        ) : null}
+            <div
+              inert={loading ? true : undefined}
+              className={`overflow-auto overscroll-none bg-white dark:bg-gray-800 transition-opacity ${loading ? "opacity-50" : ""}`}
+            >
+              {content ? (
+                <RenderedPane
+                  content={content}
+                  baseUrl={docUrl}
+                  onNavigate={onNavigate}
+                />
+              ) : (
+                <div className="flex h-full items-center justify-center p-4">
+                  <p className="text-sm text-gray-400 dark:text-gray-500">
+                    Rendered preview will appear here
+                  </p>
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
       <footer className="shrink-0 border-t border-gray-200 bg-white px-4 py-2 text-center text-xs text-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400">
         Built with Claude &middot;{" "}

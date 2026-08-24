@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback } from "react";
 import { Landing } from "./components/Landing";
 import { Viewer } from "./components/Viewer";
 import { useTheme } from "./hooks/useTheme";
@@ -11,17 +11,8 @@ export default function App() {
   const { url, navigate } = useNavigation();
   const docUrl = url.searchParams.get("url");
   const { content, loading, error } = useDocument(docUrl);
-  const prefetchedRef = useRef<string | null>(null);
 
-  const handleLandingNavigate = useCallback(
-    (targetUrl: string, fetchedContent: string) => {
-      prefetchedRef.current = fetchedContent;
-      navigate(buildAppUrl(targetUrl));
-    },
-    [navigate]
-  );
-
-  const handleViewerNavigate = useCallback(
+  const handleNavigate = useCallback(
     (targetUrl: string) => {
       navigate(buildAppUrl(targetUrl));
     },
@@ -35,25 +26,20 @@ export default function App() {
   if (!docUrl) {
     return (
       <Landing
-        onNavigate={handleLandingNavigate}
+        onNavigate={handleNavigate}
         theme={theme}
         setTheme={setTheme}
       />
     );
   }
 
-  const displayContent = prefetchedRef.current ?? content;
-  if (content && prefetchedRef.current) {
-    prefetchedRef.current = null;
-  }
-
   return (
     <Viewer
-      content={displayContent}
-      loading={loading && !displayContent}
+      content={content}
+      loading={loading}
       error={error}
       docUrl={docUrl}
-      onNavigate={handleViewerNavigate}
+      onNavigate={handleNavigate}
       onHome={handleHome}
       theme={theme}
       setTheme={setTheme}
