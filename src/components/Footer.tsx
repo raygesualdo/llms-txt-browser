@@ -1,3 +1,5 @@
+const REPO_URL = 'https://github.com/raygesualdo/llms-txt-browser'
+
 export function Footer({ className = '' }: { className?: string }) {
   return (
     <footer
@@ -5,13 +7,23 @@ export function Footer({ className = '' }: { className?: string }) {
     >
       Built with Claude &middot;{' '}
       <a
-        href="https://github.com/raygesualdo/llms-txt-browser"
+        href={REPO_URL}
         className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400"
         target="_blank"
         rel="noopener noreferrer"
       >
         Source Code
+      </a>{' '}
+      (
+      <a
+        href={`${REPO_URL}/commit/${__COMMIT_SHA__}`}
+        className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 font-mono"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {__COMMIT_SHA__.slice(0, 8)}
       </a>
+      )
     </footer>
   )
 }
