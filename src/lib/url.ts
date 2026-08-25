@@ -14,7 +14,10 @@ export function resolveRelativeUrl(href: string, baseDocUrl: string): string {
 }
 
 export function proxyUrl(url: string): string {
-  return `https://corsproxy.io/?url=${encodeURIComponent(url)}`
+  if (import.meta.env.DEV) {
+    return `https://corsproxy.io/?url=${encodeURIComponent(url)}`
+  }
+  return `/.netlify/functions/cors-proxy?url=${encodeURIComponent(url)}`
 }
 
 export function getUrlParam(): string | null {
