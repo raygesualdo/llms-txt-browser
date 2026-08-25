@@ -1,8 +1,11 @@
 import type { Context } from "@netlify/functions";
 
 export default async (request: Request, _context: Context) => {
+  console.log("🚀 ~ process.env:", process.env)
   const allowedOrigin = process.env.URL;
+  console.log("🚀 ~ allowedOrigin:", allowedOrigin)
   const origin = request.headers.get("Origin");
+  console.log("🚀 ~ origin:", origin)
 
   if (!allowedOrigin || origin !== allowedOrigin) {
     return new Response("Forbidden", { status: 403 });
@@ -10,6 +13,7 @@ export default async (request: Request, _context: Context) => {
 
   const { searchParams } = new URL(request.url);
   const targetUrl = searchParams.get("url");
+  console.log("🚀 ~ targetUrl:", targetUrl)
 
   if (!targetUrl) {
     return new Response("Missing required 'url' query parameter", {
