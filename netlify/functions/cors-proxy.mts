@@ -3,12 +3,12 @@ import type { Context } from "@netlify/functions";
 export default async (request: Request, _context: Context) => {
   console.log("🚀 ~ process.env:", process.env)
   console.log("🚀 ~ request.headers:", [...request.headers.entries()])
-  const allowedOrigin = process.env.URL;
+  const allowedOrigin = process.env.URL ?? '';
   console.log("🚀 ~ allowedOrigin:", allowedOrigin)
-  const origin = request.headers.get("Origin");
+  const origin = request.headers.get("origin");
   console.log("🚀 ~ origin:", origin)
 
-  if (!allowedOrigin || origin !== allowedOrigin) {
+  if (request.headers.get("sec-fetch-site") !== 'same-origin') {
     return new Response("Forbidden", { status: 403 });
   }
 
