@@ -29,6 +29,8 @@ export default async (request: Request, _context: Context) => {
   
   const allowedOrigin = process.env.URL ?? '';
   const headers = new Headers(response.headers);
+  headers.delete("Content-Encoding");
+  headers.delete("Content-Length");
   headers.set("Access-Control-Allow-Origin", allowedOrigin);
   headers.set("Access-Control-Allow-Methods", "GET");
   headers.set("Access-Control-Allow-Headers", "*");
