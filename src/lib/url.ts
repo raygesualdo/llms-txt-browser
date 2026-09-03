@@ -14,12 +14,6 @@ export function resolveRelativeUrl(href: string, baseDocUrl: string): string {
 }
 
 export function proxyUrl(url: string): string {
-  try {
-    const u = new URL(url)
-    if (u.hostname === 'localhost') {
-      return url
-    }
-  } catch {}
   if (import.meta.env.DEV) {
     return `https://corsproxy.io/?url=${encodeURIComponent(url)}`
   }
